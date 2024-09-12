@@ -1,0 +1,19 @@
+name: wav2lip-hq
+services:
+    wav2lip-hq:
+        image: brandonkovacs/wav2lip-hq:latest
+        container_name: wav2lip-hq
+        build:
+          context: .
+          dockerfile: Dockerfile
+          shm_size: 8gb
+        shm_size: 8gb
+        volumes:
+          - ./workspace:/workspace
+        deploy:
+          resources:
+            reservations:
+              devices:
+                - driver: nvidia
+                  count: 1
+                  capabilities: [gpu]
