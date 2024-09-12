@@ -36,6 +36,7 @@ RUN pip3 install opencv-contrib-python opencv-python python-ffmpeg mediapipe
 # Download face detector model 
 RUN mkdir -p /root/.cache/torch/hub/checkpoints
 RUN curl -SL -o /root/.cache/torch/hub/checkpoints/s3fd-619a316812.pth "https://www.adrianbulat.com/downloads/python-fan/s3fd-619a316812.pth"
+RUN ln -s /root/.cache/torch/hub/checkpoints/s3fd-619a316812.pth /app/face_detection/detection/sfd/s3fd.pth
 
 WORKDIR /app
 
